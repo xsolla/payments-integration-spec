@@ -1,0 +1,528 @@
+openapi: 3.0.3
+info:
+  title: Payments API - Public
+  version: 0.1.0
+servers:
+  - url: https://example.com
+tags:
+  - name: Payments
+  - name: Accounts
+paths:
+  /v1/payments:
+    post:
+      operationId: createPayment
+      summary: Create payment
+      tags:
+        - Payments
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentCreateRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentCreateResponse'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/Error'
+      callbacks:
+        providerEvents:
+          '{$request.body#/urls/webhook}':
+            post:
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      oneOf:
+                        - $ref: '#/components/schemas/WebhookPaymentSucceeded'
+                        - $ref: '#/components/schemas/WebhookPaymentFailed'
+                        - $ref: '#/components/schemas/WebhookPaymentRefunded'
+                        - $ref: '#/components/schemas/WebhookAccountActivated'
+                        - $ref: '#/components/schemas/WebhookAccountDeleted'
+              responses:
+                '200':
+                  description: OK
+components:
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      schema:
+        type: string
+    ContentDigest:
+      name: Content-Digest
+      in: header
+      required: true
+      schema:
+        type: string
+    SignatureInput:
+      name: Signature-Input
+      in: header
+      required: true
+      schema:
+        type: string
+    Signature:
+      name: Signature
+      in: header
+      required: true
+      schema:
+        type: string
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Error:
+      type: object
+      description: Machine-readable error object.
+      required:
+        - code
+        - message
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Human-readable error message.
+        category:
+          $ref: '#/components/schemas/ErrorCategory'
+        param:
+          type: string
+          description: Name of the parameter associated with the error, if applicable.
+        retry_after:
+          type: integer
+          format: int32
+          description: Seconds to wait before retrying (for rate limiting or temporary errors).
+        doc_url:
+          type: string
+          format: uri
+          description: Link to documentation for this error.
+        details:
+          type: object
+          description: Provider-specific structured details.
+          additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+        request_id:
+          type: string
+          description: Correlation id of the request.
+    Amount:
+      type: object
+      required:
+        - value
+        - currency
+      properties:
+        value:
+          type: string
+          description: Decimal string amount (e.g. "12.34").
+          pattern: ^-?\d+(?:[.,]\d+)?$
+        currency:
+          type: string
+          description: ISO_4217 currency code.
+          minLength: 3
+          maxLength: 3
+    Urls:
+      type: object
+      required:
+        - success
+        - cancel
+        - webhook
+      properties:
+        success:
+          type: string
+          format: uri
+        cancel:
+          type: string
+          format: uri
+        pending:
+          type: string
+          format: uri
+          description: Optional URL to redirect the customer while awaiting confirmation.
+        webhook:
+          type: string
+          format: uri
+          description: Webhook endpoint where the platform will send payment notifications.
+    Customer:
+      type: object
+      required:
+        - id
+        - email
+        - country
+        - ip
+        - language
+        - zip
+      properties:
+        id:
+          type: string
+          description: Merchant user identifier.
+        email:
+          type: string
+          format: email
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          minLength: 2
+          maxLength: 2
+        ip:
+          type: string
+          description: Customer IP address.
+        language:
+          type: string
+          description: UI language in BCP-47 format (e.g., "en").
+        zip:
+          type: string
+          description: ZIP/Postal code.
+    Project:
+      type: object
+      description: Project information. This object is always required.
+      required:
+        - name
+        - description
+        - url
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+          format: uri
+    Payload:
+      type: object
+      description: Arbitrary user input when needed.
+      additionalProperties: true
+    PaymentCreateRequest:
+      type: object
+      required:
+        - method
+        - amount
+        - project
+        - customer
+        - urls
+      properties:
+        method:
+          type: string
+          description: Canonical payment method code.
+        id:
+          type: string
+          description: Xsolla-side purchase identifier. Acts as the idempotency key for this request.
+        description:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Amount'
+        save_account:
+          type: boolean
+          description: Optional flag to save account details for future use.
+        merchant_initiated:
+          type: boolean
+          description: Optional flag to mark merchant-initiated payment.
+        account_data:
+          type: object
+          description: Free-form account data, similar to payload.
+          additionalProperties: true
+        project:
+          $ref: '#/components/schemas/Project'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        payload:
+          $ref: '#/components/schemas/Payload'
+        urls:
+          $ref: '#/components/schemas/Urls'
+    PaymentCreateResponse:
+      type: object
+      required:
+        - status
+        - action
+      properties:
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        transaction_id:
+          type: string
+          description: Transaction identifier in the payment system. If omitted, subsequent webhooks MUST include the original id from the initiation request.
+        action:
+          $ref: '#/components/schemas/Action'
+        errors:
+          type: array
+          description: Non-fatal errors or warnings from the provider.
+          items:
+            $ref: '#/components/schemas/Error'
+    WebhookEnvelope:
+      type: object
+      description: Common envelope for all incoming webhooks from payment system to Xsolla.
+      required:
+        - type
+        - occurred_at
+      properties:
+        type:
+          type: string
+          description: Event type identifier.
+        occurred_at:
+          type: string
+          format: date-time
+          description: RFC3339 timestamp when the event occurred.
+        method:
+          type: string
+          description: Canonical payment method code when applicable.
+    WebhookPaymentSucceeded:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          required:
+            - type
+            - transaction_id
+          properties:
+            type:
+              type: string
+              enum:
+                - payment.succeeded
+            transaction_id:
+              type: string
+              description: Payment system transaction identifier.
+            id:
+              type: string
+              description: Original id from the creation step (optional correlation).
+            amount:
+              $ref: '#/components/schemas/Amount'
+            account_data:
+              type: object
+              description: Free-form account data, if the payment created/updated a saved account.
+              additionalProperties: true
+            errors:
+              type: array
+              items:
+                $ref: '#/components/schemas/Error'
+    WebhookPaymentFailed:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          required:
+            - type
+            - transaction_id
+          properties:
+            type:
+              type: string
+              enum:
+                - payment.failed
+            transaction_id:
+              type: string
+              description: Payment system transaction identifier.
+            id:
+              type: string
+            amount:
+              $ref: '#/components/schemas/Amount'
+            reason:
+              type: string
+              description: Brief reason of failure provided by the payment system.
+            errors:
+              type: array
+              items:
+                $ref: '#/components/schemas/Error'
+    WebhookPaymentRefunded:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          required:
+            - type
+            - transaction_id
+            - amount
+          properties:
+            type:
+              type: string
+              enum:
+                - payment.refunded
+            transaction_id:
+              type: string
+              description: Payment system transaction identifier of the original payment.
+            amount:
+              $ref: '#/components/schemas/Amount'
+              description: Refunded amount. If omitted, full refund is implied.
+            reason:
+              type: string
+              description: Reason provided by the payment system for the refund.
+            refund_id:
+              type: string
+              description: Identifier of the refund transaction in the payment system.
+    WebhookAccountActivated:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          required:
+            - type
+            - account_id
+            - account_data
+          properties:
+            type:
+              type: string
+              enum:
+                - account.activated
+            account_id:
+              type: string
+              description: Identifier of the saved payment account (token).
+            account_data:
+              type: object
+              additionalProperties: true
+    WebhookAccountDeleted:
+      allOf:
+        - $ref: '#/components/schemas/WebhookEnvelope'
+        - type: object
+          required:
+            - type
+            - account_id
+          properties:
+            type:
+              type: string
+              enum:
+                - account.deleted
+            account_id:
+              type: string
+              description: Identifier of the saved payment account (token).
+    PaymentStatus:
+      type: string
+      description: Payment status.
+      enum:
+        - pending
+        - succeeded
+        - failed
+    RedirectAction:
+      type: object
+      required:
+        - type
+        - url
+      properties:
+        type:
+          type: string
+          const: redirect
+        url:
+          type: string
+          format: uri
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+          default: GET
+          description: Optional HTTP method for form post redirects.
+        params:
+          type: object
+          additionalProperties: true
+          description: Additional parameters to be sent with POST redirection.
+    QrAction:
+      type: object
+      required:
+        - type
+        - image_url
+      properties:
+        type:
+          type: string
+          const: qr
+        image_url:
+          type: string
+          format: uri
+        code_value:
+          type: string
+          description: Optional code to be copied by the customer.
+        ttl:
+          type: integer
+          description: Optional time-to-live for the code, in seconds.
+    ConfirmAction:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          const: confirm
+        payload:
+          type: object
+          additionalProperties: true
+          description: Optional extra parameters for confirmation, provided by the platform when needed.
+    Action:
+      oneOf:
+        - $ref: '#/components/schemas/RedirectAction'
+        - $ref: '#/components/schemas/QrAction'
+        - $ref: '#/components/schemas/ConfirmAction'
+      discriminator:
+        propertyName: type
+        mapping:
+          redirect: '#/components/schemas/RedirectAction'
+          qr: '#/components/schemas/QrAction'
+          confirm: '#/components/schemas/ConfirmAction'
+    ErrorCode:
+      type: string
+      enum:
+        - invalid_request
+        - missing_required_field
+        - invalid_param
+        - unsupported_param
+        - payload_too_large
+        - signature_invalid
+        - content_digest_mismatch
+        - authentication_required
+        - invalid_api_key
+        - permission_denied
+        - rate_limited
+        - idempotency_conflict
+        - transaction_not_found
+        - account_not_found
+        - refund_not_found
+        - method_unavailable
+        - method_unsupported
+        - amount_invalid
+        - currency_unsupported
+        - refund_not_allowed
+        - refund_amount_invalid
+        - duplicate_operation
+        - confirm_required
+        - action_expired
+        - processor_declined
+        - provider_unreachable
+        - timeout
+        - temporary_unavailable
+        - internal_error
+        - service_unavailable
+        - account_not_found
+        - account_inactive
+        - account_deleted
+        - account_locked
+        - account_verification_required
+        - account_token_expired
+        - saved_account_authorization_required
+        - saved_account_authorization_revoked
+        - saved_account_not_configured
+        - saved_account_payment_not_allowed
+        - saved_account_method_unavailable
+        - saved_account_limit_reached
+    ErrorCategory:
+      type: string
+      enum:
+        - validation
+        - auth
+        - rate_limit
+        - idempotency
+        - resource
+        - business
+        - processing
+        - system
