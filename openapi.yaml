@@ -255,7 +255,6 @@ components:
       type: object
       required:
         - status
-        - action
       properties:
         status:
           $ref: '#/components/schemas/PaymentStatus'
@@ -269,6 +268,9 @@ components:
           description: Non-fatal errors or warnings from the provider.
           items:
             $ref: '#/components/schemas/Error'
+      oneOf:
+        - $ref: '#/components/schemas/PaymentCreateResponsePending'
+        - $ref: '#/components/schemas/PaymentCreateResponseActionRequired'
     WebhookEnvelope:
       type: object
       description: Common envelope for all incoming webhooks from payment system to Xsolla.
@@ -399,6 +401,25 @@ components:
             account_id:
               type: string
               description: Identifier of the saved payment account (token).
+    PaymentCreateResponsePending:
+      type: object
+      required:
+        - status
+        - action
+      properties:
+        status:
+          type: string
+          const: pending
+    PaymentCreateResponseActionRequired:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - succeeded
+            - failed
     PaymentStatus:
       type: string
       description: Payment status.

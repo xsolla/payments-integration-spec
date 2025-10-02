@@ -43,6 +43,92 @@ Payment providers must return these headers for outgoing webhooks to Xsolla as w
 sig1=("@method" "@target-uri" "content-digest" "request-id");alg="hmac-sha256";created=1700000000;expires=1700000600;keyid="acc_123"
 ```
 
+### Example request for signature verification
+
+Body (JSON):
+
+```json
+{
+  "method": "paypal",
+  "id": "12212486748",
+  "description": "Invoice description",
+  "amount": { "value": "1", "currency": "USD" },
+  "save_account": false,
+  "merchant_initiated": true,
+  "project": {
+    "name": "EPIC GAMES LEVELED UP",
+    "description": "sunt mollit aliqua consequat",
+    "url": "https://xsolla.com/portfolio/clients/epic-games",
+    "icon": "https://cdn.xsolla.net/strapi-bucket-prod/x_7bf715c4bd/x_7bf715c4bd.svg"
+  },
+  "customer": {
+    "id": "bYd6nNaVv0mx5mZUFjv5Qw",
+    "email": "user@example.com",
+    "country": "US",
+    "ip": "127.0.0.1",
+    "language": "en-US",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+    "zip": ""
+  },
+  "urls": {
+    "success": "https://pay-station.xsolla.com/userback/return?sid=success-5569",
+    "cancel": "https://pay-station.xsolla.com/userback/return?sid=failed-5569",
+    "pending": "https://pay-station.xsolla.com/userback/return?sid=pending-5569",
+    "webhook": "https://ps.xsolla.dev/universal/universal-api"
+  }
+}
+```
+
+Method:
+
+```text
+POST
+```
+
+URL:
+
+```text
+https://example.com/v1/payments
+```
+
+String for signature (components):
+
+```text
+"@method": POST
+"@target-uri": https://example.com/v1/payments
+"content-digest": sha-256=za9ntgWt36r2U7FlKOi8b4aVV78l4gNDjY2cEZSguOk=
+"request-id": req_68db892bb70f8900615812
+```
+
+HMAC-SHA256:
+
+```text
+cbfe557665567ec7723fa5dd1d0a21fdf6aec4a7cdd6dff23116ac0032cd1562
+```
+
+Signature:
+
+```text
+sig1=:y/5VdmVWfsdyP6XdHQoh/fauxKfN1t/yMRasADLNFWI=:
+```
+
+Headers:
+
+```text
+Content-Type: application/json
+Content-Digest: sha-256=za9ntgWt36r2U7FlKOi8b4aVV78l4gNDjY2cEZSguOk=
+Request-Id: req_68db892bb70f8900615812
+Signature-Input: sig1=("("@method" "@target-uri" "content-digest" "request-id")");alg="hmac-sha256";created=1759217963;expires=1759218263;keyid="1213"
+Signature: sig1=:y/5VdmVWfsdyP6XdHQoh/fauxKfN1t/yMRasADLNFWI=:
+Prefer: environment="sandbox"
+```
+
+Signing key (example):
+
+```
+eIfjRT>'i=8Xao8:n2P33vP4u"NTiGeU
+```
+
 ## Endpoints to implement (minimum)
 
 - `POST /v1/payments` — accept payment creation and return the `action` object according to the OpenAPI spec.
