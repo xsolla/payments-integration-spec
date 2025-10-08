@@ -1,540 +1,2241 @@
 {
-    "item": [
+  "item": [
+    {
+      "name": "v1",
+      "description": "",
+      "item": [
         {
-            "name": "v1",
-            "description": "",
-            "item": [
+          "name": "payments",
+          "description": "",
+          "item": [
+            {
+              "id": "0bb51e3b-3b6e-4b6f-b2d1-85abd868582e",
+              "name": "Create payment",
+              "request": {
+                "name": "Create payment",
+                "description": {},
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) ",
+                      "type": "text/plain"
+                    },
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) ",
+                      "type": "text/plain"
+                    },
+                    "key": "Content-Digest",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) ",
+                      "type": "text/plain"
+                    },
+                    "key": "Signature-Input",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) ",
+                      "type": "text/plain"
+                    },
+                    "key": "Signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-857146\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"dolor_be\": 70487605\n  },\n  \"payload\": {\n    \"nisi883\": true,\n    \"Duis1\": 94107242.09775212\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": null
+              },
+              "response": [
                 {
-                    "name": "payments",
-                    "description": "",
-                    "item": [
-                        {
-                            "id": "77d9950c-f678-4dcc-bb17-3b39833582c7",
-                            "name": "Create payment",
-                            "request": {
-                                "name": "Create payment",
-                                "description": {},
-                                "url": {
-                                    "path": [
-                                        "v1",
-                                        "payments"
-                                    ],
-                                    "host": [
-                                        "{{baseUrl}}"
-                                    ],
-                                    "query": [],
-                                    "variable": []
-                                },
-                                "header": [
-                                    {
-                                        "disabled": false,
-                                        "description": {
-                                            "content": "(Required) ",
-                                            "type": "text/plain"
-                                        },
-                                        "key": "Request-Id",
-                                        "value": "<string>"
-                                    },
-                                    {
-                                        "disabled": false,
-                                        "description": {
-                                            "content": "(Required) ",
-                                            "type": "text/plain"
-                                        },
-                                        "key": "Content-Digest",
-                                        "value": "<string>"
-                                    },
-                                    {
-                                        "disabled": false,
-                                        "description": {
-                                            "content": "(Required) ",
-                                            "type": "text/plain"
-                                        },
-                                        "key": "Signature-Input",
-                                        "value": "<string>"
-                                    },
-                                    {
-                                        "disabled": false,
-                                        "description": {
-                                            "content": "(Required) ",
-                                            "type": "text/plain"
-                                        },
-                                        "key": "Signature",
-                                        "value": "<string>"
-                                    },
-                                    {
-                                        "key": "Content-Type",
-                                        "value": "application/json"
-                                    },
-                                    {
-                                        "key": "Accept",
-                                        "value": "application/json"
-                                    }
-                                ],
-                                "method": "POST",
-                                "body": {
-                                    "mode": "raw",
-                                    "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"9527640190,866319\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"culpa_063\": false\n  },\n  \"payload\": {\n    \"enime55\": false,\n    \"enim__\": \"dolor cupidatat\",\n    \"inc\": \"voluptate anim ad magna\",\n    \"consequat_ac\": 91676971\n  }\n}",
-                                    "options": {
-                                        "raw": {
-                                            "headerFamily": "json",
-                                            "language": "json"
-                                        }
-                                    }
-                                },
-                                "auth": null
-                            },
-                            "response": [
-                                {
-                                    "id": "9d9716df-5406-4fc5-8564-1c544473bce1",
-                                    "name": "Created",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "v1",
-                                                "payments"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Request-Id",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Content-Digest",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature-Input",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"9527640190,866319\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"culpa_063\": false\n  },\n  \"payload\": {\n    \"enime55\": false,\n    \"enim__\": \"dolor cupidatat\",\n    \"inc\": \"voluptate anim ad magna\",\n    \"consequat_ac\": 91676971\n  }\n}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Created",
-                                    "code": 201,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{\n  \"status\": \"<string>\",\n  \"action\": true\n}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                },
-                                {
-                                    "id": "b0deac26-00df-4fc7-967f-44bbfd715eba",
-                                    "name": "Error response",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "v1",
-                                                "payments"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Request-Id",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Content-Digest",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature-Input",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"9527640190,866319\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"culpa_063\": false\n  },\n  \"payload\": {\n    \"enime55\": false,\n    \"enim__\": \"dolor cupidatat\",\n    \"inc\": \"voluptate anim ad magna\",\n    \"consequat_ac\": 91676971\n  }\n}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Bad Request",
-                                    "code": 400,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{\n  \"error\": {\n    \"code\": \"signature_invalid\",\n    \"message\": \"<string>\",\n    \"category\": \"validation\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ullamco_3\": \"commodo \"\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                },
-                                {
-                                    "id": "13b2118d-3961-4fb5-93ef-8edccb35726a",
-                                    "name": "Error response",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "v1",
-                                                "payments"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Request-Id",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Content-Digest",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature-Input",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"9527640190,866319\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"culpa_063\": false\n  },\n  \"payload\": {\n    \"enime55\": false,\n    \"enim__\": \"dolor cupidatat\",\n    \"inc\": \"voluptate anim ad magna\",\n    \"consequat_ac\": 91676971\n  }\n}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Unauthorized",
-                                    "code": 401,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{\n  \"error\": {\n    \"code\": \"signature_invalid\",\n    \"message\": \"<string>\",\n    \"category\": \"validation\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ullamco_3\": \"commodo \"\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                },
-                                {
-                                    "id": "ffb5a3df-2cd6-4bae-8bad-65edc54b7db8",
-                                    "name": "Error response",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "v1",
-                                                "payments"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Request-Id",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Content-Digest",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature-Input",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"9527640190,866319\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"culpa_063\": false\n  },\n  \"payload\": {\n    \"enime55\": false,\n    \"enim__\": \"dolor cupidatat\",\n    \"inc\": \"voluptate anim ad magna\",\n    \"consequat_ac\": 91676971\n  }\n}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-                                    "code": 422,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{\n  \"error\": {\n    \"code\": \"signature_invalid\",\n    \"message\": \"<string>\",\n    \"category\": \"validation\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ullamco_3\": \"commodo \"\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                },
-                                {
-                                    "id": "42629d5d-172a-4008-b5fa-9878f1f98f22",
-                                    "name": "Error response",
-                                    "originalRequest": {
-                                        "url": {
-                                            "path": [
-                                                "v1",
-                                                "payments"
-                                            ],
-                                            "host": [
-                                                "{{baseUrl}}"
-                                            ],
-                                            "query": [],
-                                            "variable": []
-                                        },
-                                        "header": [
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Request-Id",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Content-Digest",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature-Input",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "disabled": false,
-                                                "description": {
-                                                    "content": "(Required) ",
-                                                    "type": "text/plain"
-                                                },
-                                                "key": "Signature",
-                                                "value": "<string>"
-                                            },
-                                            {
-                                                "key": "Content-Type",
-                                                "value": "application/json"
-                                            },
-                                            {
-                                                "key": "Accept",
-                                                "value": "application/json"
-                                            }
-                                        ],
-                                        "method": "POST",
-                                        "body": {
-                                            "mode": "raw",
-                                            "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"9527640190,866319\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"culpa_063\": false\n  },\n  \"payload\": {\n    \"enime55\": false,\n    \"enim__\": \"dolor cupidatat\",\n    \"inc\": \"voluptate anim ad magna\",\n    \"consequat_ac\": 91676971\n  }\n}",
-                                            "options": {
-                                                "raw": {
-                                                    "headerFamily": "json",
-                                                    "language": "json"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "status": "Internal Server Error",
-                                    "code": 500,
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json"
-                                        }
-                                    ],
-                                    "body": "{\n  \"error\": {\n    \"code\": \"signature_invalid\",\n    \"message\": \"<string>\",\n    \"category\": \"validation\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ullamco_3\": \"commodo \"\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
-                                    "cookie": [],
-                                    "_postman_previewlanguage": "json"
-                                }
-                            ],
-                            "event": [],
-                            "protocolProfileBehavior": {
-                                "disableBodyPruning": true
-                            }
+                  "id": "4396d6a1-e1e2-4365-970b-1defd5f7e7fb",
+                  "name": "Created",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Content-Digest",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature-Input",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-857146\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"dolor_be\": 70487605\n  },\n  \"payload\": {\n    \"nisi883\": true,\n    \"Duis1\": 94107242.09775212\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
                         }
-                    ]
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"status\": \"<string>\",\n  \"action\": true\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "adbd6da2-cf24-43a7-ac80-1da29e1cf0d3",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Content-Digest",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature-Input",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-857146\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"dolor_be\": 70487605\n  },\n  \"payload\": {\n    \"nisi883\": true,\n    \"Duis1\": 94107242.09775212\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "651171b1-6853-4169-854b-8b356aa496d0",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Content-Digest",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature-Input",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-857146\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"dolor_be\": 70487605\n  },\n  \"payload\": {\n    \"nisi883\": true,\n    \"Duis1\": 94107242.09775212\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "6abc77f2-a1f0-45a8-bb06-378aac75412a",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Content-Digest",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature-Input",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-857146\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"dolor_be\": 70487605\n  },\n  \"payload\": {\n    \"nisi883\": true,\n    \"Duis1\": 94107242.09775212\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "461d76d1-0275-4a5d-af0b-9d5f1a02990f",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Content-Digest",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature-Input",
+                        "value": "<string>"
+                      },
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-857146\",\n    \"currency\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  },\n  \"id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"save_account\": \"<boolean>\",\n  \"merchant_initiated\": \"<boolean>\",\n  \"account_data\": {\n    \"dolor_be\": 70487605\n  },\n  \"payload\": {\n    \"nisi883\": true,\n    \"Duis1\": 94107242.09775212\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
                 }
-            ]
-        }
-    ],
-    "event": [],
-    "variable": [
+              ],
+              "event": [],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "name": "{transaction_id}",
+              "description": "",
+              "item": [
+                {
+                  "id": "3ad46b02-6283-4be4-a5d9-11305e630b7a",
+                  "name": "Get payment status",
+                  "request": {
+                    "name": "Get payment status",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments",
+                        ":transaction_id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "transaction_id",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {},
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "bf86e8cf-002e-46df-ae7f-6f065de3cc93",
+                      "name": "Status",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"status\": \"succeeded\",\n  \"id\": \"<string>\",\n  \"amount\": {\n    \"value\": \"-16\",\n    \"currency\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"code\": \"saved_account_limit_reached\",\n      \"message\": \"<string>\",\n      \"category\": \"processing\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"minimedd\": \"ullamco in dolore\",\n        \"veniam_ec\": 25488788,\n        \"occaecat_e\": -99337921.32767761,\n        \"sint4e1\": true,\n        \"velit_0d\": 93808851.40400574\n      }\n    },\n    {\n      \"code\": \"duplicate_operation\",\n      \"message\": \"<string>\",\n      \"category\": \"business\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"qui_f\": \"qui in tempor\",\n        \"cillumb\": 47114426.09009197,\n        \"deserunt_b\": true,\n        \"culpa_826\": 25159363,\n        \"incididunt_d4\": -64913850\n      }\n    }\n  ]\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "b4141e75-678a-46ab-a1d1-bf68da95e35b",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "6393c39d-2278-423f-84e6-d6953846eb14",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "5c5ad23d-f303-4fd2-8a51-1eccf9ad8a41",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "f71289b1-61c6-4dd7-a796-4d940af4f0be",
+                  "name": "Confirm payment",
+                  "request": {
+                    "name": "Confirm payment",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "v1",
+                        "payments",
+                        ":transaction_id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "transaction_id",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "PATCH",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"162.53024868\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"payload\": {\n    \"ullamco__1\": -28171198.794630542,\n    \"sit_b\": \"ad exercitation laborum consectetur proident\",\n    \"dolore_89d\": false\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "34b86033-acbd-4bbe-be18-10d36c46b43e",
+                      "name": "Confirmation result",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"162.53024868\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"payload\": {\n    \"ullamco__1\": -28171198.794630542,\n    \"sit_b\": \"ad exercitation laborum consectetur proident\",\n    \"dolore_89d\": false\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"status\": \"succeeded\",\n  \"transaction_id\": \"<string>\",\n  \"action\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"method\": \"GET\",\n    \"params\": {\n      \"sedc\": \"aliquip Excepteur\",\n      \"eu05\": true\n    }\n  },\n  \"errors\": [\n    {\n      \"code\": \"processor_declined\",\n      \"message\": \"<string>\",\n      \"category\": \"validation\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"ut0\": -62760204,\n        \"tempor_3\": -27521311.049200743\n      }\n    },\n    {\n      \"code\": \"timeout\",\n      \"message\": \"<string>\",\n      \"category\": \"validation\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"dolore_2\": 49526155,\n        \"cillum_0ef\": false,\n        \"cillum_f\": 75123790\n      }\n    }\n  ]\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "29466dde-05f4-458c-95d2-d1b5238a614a",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"162.53024868\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"payload\": {\n    \"ullamco__1\": -28171198.794630542,\n    \"sit_b\": \"ad exercitation laborum consectetur proident\",\n    \"dolore_89d\": false\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "55aad0c1-4fa6-4616-bd36-347a982e5c93",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"162.53024868\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"payload\": {\n    \"ullamco__1\": -28171198.794630542,\n    \"sit_b\": \"ad exercitation laborum consectetur proident\",\n    \"dolore_89d\": false\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "ae212b84-20e8-4d10-9a60-5eb02ab0d121",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"162.53024868\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"payload\": {\n    \"ullamco__1\": -28171198.794630542,\n    \"sit_b\": \"ad exercitation laborum consectetur proident\",\n    \"dolore_89d\": false\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "2bdba14a-9701-430d-8e3b-4425025446a5",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "payments",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"<string>\",\n  \"amount\": {\n    \"value\": \"162.53024868\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"payload\": {\n    \"ullamco__1\": -28171198.794630542,\n    \"sit_b\": \"ad exercitation laborum consectetur proident\",\n    \"dolore_89d\": false\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
         {
-            "key": "baseUrl",
-            "value": "https://example.com"
+          "name": "refund",
+          "description": "",
+          "item": [
+            {
+              "name": "{transaction_id}",
+              "description": "",
+              "item": [
+                {
+                  "id": "71555f42-48a9-4055-afab-ee1effe1ea8c",
+                  "name": "Refund payment",
+                  "request": {
+                    "name": "Refund payment",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "v1",
+                        "refund",
+                        ":transaction_id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "transaction_id",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": {\n    \"value\": \"606075233.25001691198\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "f9880ad8-7d04-4207-a590-796ef38a3075",
+                      "name": "Accepted",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "refund",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "POST",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": {\n    \"value\": \"606075233.25001691198\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"status\": \"succeeded\",\n  \"refund_id\": \"<string>\",\n  \"errors\": [\n    {\n      \"code\": \"temporary_unavailable\",\n      \"message\": \"<string>\",\n      \"category\": \"processing\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"nullad0\": false\n      }\n    },\n    {\n      \"code\": \"timeout\",\n      \"message\": \"<string>\",\n      \"category\": \"auth\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"Ut_8\": \"l\"\n      }\n    }\n  ]\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "a6fb4c18-3491-485e-bde6-ac2d5625162c",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "refund",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "POST",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": {\n    \"value\": \"606075233.25001691198\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "127983db-22a8-487a-9223-58427afe45eb",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "refund",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "POST",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": {\n    \"value\": \"606075233.25001691198\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "7d0b549c-0fee-49f1-9ec5-f2c077b8474e",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "refund",
+                            ":transaction_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "POST",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": {\n    \"value\": \"606075233.25001691198\",\n    \"currency\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "accounts",
+          "description": "",
+          "item": [
+            {
+              "id": "147e64b2-c594-49fb-88ef-ab53146a7ac0",
+              "name": "Create saved payment account",
+              "request": {
+                "name": "Create saved payment account",
+                "description": {},
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": {
+                      "content": "(Required) ",
+                      "type": "text/plain"
+                    },
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "53eacfec-17a3-4aff-bee0-cbc7252f5307",
+                  "name": "Created",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"status\": \"active\",\n  \"id\": \"<string>\",\n  \"action\": {\n    \"type\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"method\": \"GET\",\n    \"params\": {\n      \"Duis8\": 89812762,\n      \"incididunt_4e4\": \"magna laboris\"\n    }\n  },\n  \"data\": {\n    \"voluptate_4\": -48096348.70740729,\n    \"et_593\": -99906922\n  },\n  \"errors\": [\n    {\n      \"code\": \"idempotency_conflict\",\n      \"message\": \"<string>\",\n      \"category\": \"processing\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"adipisicing_4c\": false,\n        \"nona4\": 8345926.889790341\n      }\n    },\n    {\n      \"code\": \"account_verification_required\",\n      \"message\": \"<string>\",\n      \"category\": \"resource\",\n      \"param\": \"<string>\",\n      \"retry_after\": \"<integer>\",\n      \"doc_url\": \"<uri>\",\n      \"details\": {\n        \"ad6\": true\n      }\n    }\n  ]\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "eb120101-3c8b-4fa2-8f65-5935b172122b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "v1",
+                        "accounts"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"<string>\",\n  \"customer\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"country\": \"<string>\",\n    \"ip\": \"<string>\",\n    \"language\": \"<string>\",\n    \"zip\": \"<string>\"\n  },\n  \"project\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"urls\": {\n    \"success\": \"<uri>\",\n    \"cancel\": \"<uri>\",\n    \"webhook\": \"<uri>\",\n    \"pending\": \"<uri>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "name": "{account_id}",
+              "description": "",
+              "item": [
+                {
+                  "id": "fba16bb2-6ad5-460c-b3a5-2d97bfa27232",
+                  "name": "Get saved account status",
+                  "request": {
+                    "name": "Get saved account status",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "v1",
+                        "accounts",
+                        ":account_id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "account_id",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {},
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "8e63ba4b-9fb6-4b05-93b9-0ab807a71513",
+                      "name": "Status",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"status\": \"active\",\n  \"method\": \"<string>\",\n  \"data\": {\n    \"commodo_694\": 46463639\n  }\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "96e0202c-65a9-46b8-a620-ddf74763ac42",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"error\": {\n    \"code\": \"account_inactive\",\n    \"message\": \"<string>\",\n    \"category\": \"idempotency\",\n    \"param\": \"<string>\",\n    \"retry_after\": \"<integer>\",\n    \"doc_url\": \"<uri>\",\n    \"details\": {\n      \"ide64\": 97362121,\n      \"utd\": false\n    }\n  },\n  \"request_id\": \"<string>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "55f116e4-9efd-4181-afa2-ecfdec269491",
+                  "name": "Confirm saved account",
+                  "request": {
+                    "name": "Confirm saved account",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "v1",
+                        "accounts",
+                        ":account_id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "account_id",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "PATCH",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"proident_c8\": -14473770\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "ab29af20-07a1-44b8-8542-0511fc9def3e",
+                      "name": "Status",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"proident_c8\": -14473770\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"status\": \"active\",\n  \"method\": \"<string>\",\n  \"data\": {\n    \"commodo_694\": 46463639\n  }\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "03396d86-4269-4966-b54c-e688948329d7",
+                  "name": "Delete saved account",
+                  "request": {
+                    "name": "Delete saved account",
+                    "description": {},
+                    "url": {
+                      "path": [
+                        "v1",
+                        "accounts",
+                        ":account_id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "value": "<string>",
+                          "key": "account_id",
+                          "disabled": false,
+                          "description": {
+                            "content": "(Required) ",
+                            "type": "text/plain"
+                          }
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "disabled": false,
+                        "description": {
+                          "content": "(Required) ",
+                          "type": "text/plain"
+                        },
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      }
+                    ],
+                    "method": "DELETE",
+                    "body": {},
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "4181ff6c-d89a-4115-86c2-60c1434e8a18",
+                      "name": "Deleted",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account_id"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": []
+                        },
+                        "header": [
+                          {
+                            "disabled": false,
+                            "description": {
+                              "content": "(Required) ",
+                              "type": "text/plain"
+                            },
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          }
+                        ],
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "header": [],
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ]
+            }
+          ]
         }
-    ],
-    "info": {
-        "_postman_id": "76cfe857-830f-44a6-a5c5-f2e138f79b33",
-        "name": "Payments API - Public",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-        "description": {
-            "content": "",
-            "type": "text/plain"
+      ]
+    },
+    {
+      "name": "health",
+      "description": "",
+      "item": [
+        {
+          "id": "865e7b47-cbd0-409b-a272-c3a785791786",
+          "name": "Health check",
+          "request": {
+            "name": "Health check",
+            "description": {},
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {},
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae84ed0c-7238-4d7a-a7ad-5ee54ddb1da0",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [],
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
         }
+      ]
+    },
+    {
+      "name": "webhooks",
+      "description": "Provider → Xsolla callbacks (samples)",
+      "item": [
+        {
+          "name": "payment.succeeded (sample)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Request-Id",
+                "value": "wh_123"
+              },
+              {
+                "key": "Content-Digest",
+                "value": "sha-256=<base64>"
+              },
+              {
+                "key": "Signature-Input",
+                "value": "sig1=(\"@method\" \"@target-uri\" \"content-digest\" \"request-id\");alg=\"hmac-sha256\";created=1700000000;expires=1700000600;keyid=\"acc_123\""
+              },
+              {
+                "key": "Signature",
+                "value": "sig1=:<base64>:"
+              }
+            ],
+            "url": {
+              "raw": "{{webhookUrl}}",
+              "host": [
+                "{{webhookUrl}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"payment.succeeded\",\n  \"occurred_at\": \"2025-01-01T00:00:00Z\",\n  \"transaction_id\": \"tr_123\",\n  \"id\": \"12212486748\",\n  \"amount\": {\n    \"value\": \"1\",\n    \"currency\": \"USD\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "payment.failed (sample)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Request-Id",
+                "value": "wh_123"
+              },
+              {
+                "key": "Content-Digest",
+                "value": "sha-256=<base64>"
+              },
+              {
+                "key": "Signature-Input",
+                "value": "sig1=(\"@method\" \"@target-uri\" \"content-digest\" \"request-id\");alg=\"hmac-sha256\";created=1700000000;expires=1700000600;keyid=\"acc_123\""
+              },
+              {
+                "key": "Signature",
+                "value": "sig1=:<base64>:"
+              }
+            ],
+            "url": {
+              "raw": "{{webhookUrl}}",
+              "host": [
+                "{{webhookUrl}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"payment.failed\",\n  \"occurred_at\": \"2025-01-01T00:00:00Z\",\n  \"transaction_id\": \"tr_124\",\n  \"id\": \"12212486748\",\n  \"amount\": {\n    \"value\": \"1\",\n    \"currency\": \"USD\"\n  },\n  \"reason\": \"insufficient_funds\"\n}"
+            }
+          }
+        },
+        {
+          "name": "payment.refunded (sample)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Request-Id",
+                "value": "wh_123"
+              },
+              {
+                "key": "Content-Digest",
+                "value": "sha-256=<base64>"
+              },
+              {
+                "key": "Signature-Input",
+                "value": "sig1=(\"@method\" \"@target-uri\" \"content-digest\" \"request-id\");alg=\"hmac-sha256\";created=1700000000;expires=1700000600;keyid=\"acc_123\""
+              },
+              {
+                "key": "Signature",
+                "value": "sig1=:<base64>:"
+              }
+            ],
+            "url": {
+              "raw": "{{webhookUrl}}",
+              "host": [
+                "{{webhookUrl}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"payment.refunded\",\n  \"occurred_at\": \"2025-01-01T00:00:00Z\",\n  \"transaction_id\": \"tr_125\",\n  \"amount\": {\n    \"value\": \"1\",\n    \"currency\": \"USD\"\n  },\n  \"reason\": \"requested_by_customer\",\n  \"refund_id\": \"rf_1\"\n}"
+            }
+          }
+        },
+        {
+          "name": "account.activated (sample)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Request-Id",
+                "value": "wh_123"
+              },
+              {
+                "key": "Content-Digest",
+                "value": "sha-256=<base64>"
+              },
+              {
+                "key": "Signature-Input",
+                "value": "sig1=(\"@method\" \"@target-uri\" \"content-digest\" \"request-id\");alg=\"hmac-sha256\";created=1700000000;expires=1700000600;keyid=\"acc_123\""
+              },
+              {
+                "key": "Signature",
+                "value": "sig1=:<base64>:"
+              }
+            ],
+            "url": {
+              "raw": "{{webhookUrl}}",
+              "host": [
+                "{{webhookUrl}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"account.activated\",\n  \"occurred_at\": \"2025-01-01T00:00:00Z\",\n  \"account_id\": \"acc_1\",\n  \"account_data\": {}\n}"
+            }
+          }
+        },
+        {
+          "name": "account.deleted (sample)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Request-Id",
+                "value": "wh_123"
+              },
+              {
+                "key": "Content-Digest",
+                "value": "sha-256=<base64>"
+              },
+              {
+                "key": "Signature-Input",
+                "value": "sig1=(\"@method\" \"@target-uri\" \"content-digest\" \"request-id\");alg=\"hmac-sha256\";created=1700000000;expires=1700000600;keyid=\"acc_123\""
+              },
+              {
+                "key": "Signature",
+                "value": "sig1=:<base64>:"
+              }
+            ],
+            "url": {
+              "raw": "{{webhookUrl}}",
+              "host": [
+                "{{webhookUrl}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"account.deleted\",\n  \"occurred_at\": \"2025-01-01T00:00:00Z\",\n  \"account_id\": \"acc_1\"\n}"
+            }
+          }
+        }
+      ]
     }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://example.com"
+    }
+  ],
+  "info": {
+    "_postman_id": "ee3ea047-437f-4e54-ab43-77580abeebd6",
+    "name": "Payments API - Public",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
 }

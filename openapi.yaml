@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Payments API - Public
   version: 0.1.0
@@ -40,6 +40,192 @@ paths:
           $ref: '#/components/responses/Error'
         '500':
           $ref: '#/components/responses/Error'
+  /v1/payments/{transaction_id}:
+    get:
+      operationId: getPaymentStatus
+      summary: Get payment status
+      tags:
+        - Payments
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentStatusResponse'
+        '401':
+          $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/Error'
+    patch:
+      operationId: confirmPayment
+      summary: Confirm payment
+      tags:
+        - Payments
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentConfirmRequest'
+      responses:
+        '200':
+          description: Confirmation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentConfirmResponse'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/Error'
+  /v1/refund/{transaction_id}:
+    post:
+      operationId: refundPayment
+      summary: Refund payment
+      tags:
+        - Payments
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRefundRequest'
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentRefundResponse'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+        '422':
+          $ref: '#/components/responses/Error'
+  /v1/accounts:
+    post:
+      operationId: createAccount
+      summary: Create saved payment account
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreateRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountCreateResponse'
+        '400':
+          $ref: '#/components/responses/Error'
+  /v1/accounts/{account_id}:
+    get:
+      operationId: getAccountStatus
+      summary: Get saved account status
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountStatusResponse'
+        '404':
+          $ref: '#/components/responses/Error'
+    patch:
+      operationId: confirmAccount
+      summary: Confirm saved account
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountStatusResponse'
+    delete:
+      operationId: deleteAccount
+      summary: Delete saved account
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
+  /health:
+    get:
+      operationId: health
+      summary: Health check
+      tags:
+        - Payments
+      responses:
+        '200':
+          description: ok
       callbacks:
         providerEvents:
           '{$request.body#/urls/webhook}':
@@ -58,6 +244,32 @@ paths:
               responses:
                 '200':
                   description: OK
+webhooks:
+  paymentEvent:
+    post:
+      summary: Provider → Xsolla webhooks
+      description: Significant events delivered by the provider.
+      tags:
+        - Payments
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/WebhookPaymentSucceeded'
+                - $ref: '#/components/schemas/WebhookPaymentFailed'
+                - $ref: '#/components/schemas/WebhookPaymentRefunded'
+                - $ref: '#/components/schemas/WebhookAccountActivated'
+                - $ref: '#/components/schemas/WebhookAccountDeleted'
+      responses:
+        '200':
+          description: OK
 components:
   parameters:
     RequestId:
@@ -271,6 +483,130 @@ components:
       oneOf:
         - $ref: '#/components/schemas/PaymentCreateResponsePending'
         - $ref: '#/components/schemas/PaymentCreateResponseActionRequired'
+    PaymentConfirmRequest:
+      type: object
+      description: |
+        Confirm payment input. The payload here may differ from the payload returned in the previous step; both are configured by Xsolla integration manager per provider.
+      required:
+        - method
+        - amount
+        - id
+      properties:
+        method:
+          type: string
+          description: Canonical payment method code.
+        amount:
+          $ref: '#/components/schemas/Amount'
+        id:
+          type: string
+        payload:
+          $ref: '#/components/schemas/Payload'
+    PaymentConfirmResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        transaction_id:
+          type: string
+          description: Transaction identifier in the payment system.
+        action:
+          $ref: '#/components/schemas/Action'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    PaymentRefundRequest:
+      type: object
+      description: Refund a payment. Partial refund if amount is provided; full refund otherwise.
+      properties:
+        amount:
+          $ref: '#/components/schemas/Amount'
+        id:
+          type: string
+          description: Original id from the creation step (optional correlation).
+        reason:
+          type: string
+    PaymentStatusResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        id:
+          type: string
+        amount:
+          $ref: '#/components/schemas/Amount'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    PaymentRefundResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: '#/components/schemas/PaymentStatus'
+        refund_id:
+          type: string
+          description: Identifier of the refund transaction in the payment system.
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    AccountCreateRequest:
+      type: object
+      required:
+        - method
+        - customer
+        - project
+        - urls
+      properties:
+        method:
+          type: string
+          description: Canonical payment method code.
+        customer:
+          $ref: '#/components/schemas/Customer'
+        project:
+          $ref: '#/components/schemas/Project'
+        urls:
+          $ref: '#/components/schemas/Urls'
+    AccountCreateResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        id:
+          type: string
+          description: Identifier of the saved account (token).
+        action:
+          $ref: '#/components/schemas/Action'
+        data:
+          type: object
+          description: Free-form data, similar to payload.
+          additionalProperties: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    AccountStatusResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        method:
+          type: string
+        data:
+          type: object
+          description: Free-form data, similar to payload.
+          additionalProperties: true
     WebhookEnvelope:
       type: object
       description: Common envelope for all incoming webhooks from payment system to Xsolla.
@@ -547,3 +883,10 @@ components:
         - business
         - processing
         - system
+    AccountStatus:
+      type: string
+      description: Saved account status.
+      enum:
+        - pending
+        - active
+        - inactive
