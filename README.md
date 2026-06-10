@@ -1,280 +1,51 @@
-# Payment Providers Integration Guide
+# Xsolla Payments Integration Spec
 
-This document describes the API specification that payment providers should implement on their side to integrate with the Payments API.
-The provider-side implementation can be a proxy service to an existing provider API or a new service built specifically for this contract.
+[![License](https://img.shields.io/github/license/xsolla/payments-integration-spec)](#license)
 
 ## Overview
 
-- All synchronous API calls (e.g., `POST /v1/payments`) are sent by Xsolla to the provider.
-- Payment providers must implement REST endpoints to receive these requests, verify HTTP Message Signatures, and respond according to the API contract.
-- Payment providers must also be able to send webhook requests back to Xsolla (e.g., status notifications), signed with HTTP Message Signatures.
+This repository contains the API specification that payment providers must implement to integrate with the Xsolla Payments platform. It defines the REST endpoint contract, HTTP Message Signature scheme (RFC 9421 / RFC 9530), webhook event payloads, and payment flow sequences.
 
-## Security and Signing
+The specification is published in both OpenAPI (`openapi.yaml`) and Postman (`postman.json`) formats. All synchronous API calls are sent **from Xsolla to the provider**. Providers implement the REST endpoints, verify request signatures, and respond per the contract.
 
-We use:
-- HTTP Message Signatures (RFC 9421)
-- Content-Digest (RFC 9530)
+## Requirements
 
-Secrets are managed per provider account. The `keyid` identifies both the secret on Xsolla side and the associated provider account.
-Signing key and its `keyid` are issued by the Xsolla integration manager and are provided to the provider upon request.
+- A REST service capable of receiving HTTPS requests from Xsolla
+- Ability to verify HTTP Message Signatures (RFC 9421) and Content-Digest (RFC 9530)
+- A signing key and `keyid` issued by your Xsolla integration manager
+- (Optional) [Prism CLI](https://stoplight.io/open-source/prism) for local mock server
 
-### Headers
+## Install
 
-Incoming requests from Xsolla will include:
-- `Request-Id` (required)
-- `Content-Digest` (required for requests with body)
-- `Signature-Input` (required)
-- `Signature` (required)
-- `Prefer` (internal, optional): environment="sandbox"
-
-Payment providers must return these headers for outgoing webhooks to Xsolla as well, following the same rules.
-
-### Verification steps (incoming requests)
-
-1. Obtain the shared secret by `keyid`.
-2. Validate `created`/`expires` time window.
-3. Verify `Content-Digest` against the raw request body (when present).
-4. Reconstruct signature base per `Signature-Input` and verify `Signature` using HMAC-SHA256.
-5. Correlate `Request-Id` in logs for tracing.
-
-### Example `Signature-Input`
-
-```
-sig1=("@method" "@target-uri" "content-digest" "request-id");alg="hmac-sha256";created=1700000000;expires=1700000600;keyid="acc_123"
+```bash
+git clone https://github.com/xsolla/payments-integration-spec.git
 ```
 
-### Example request for signature verification
+Key files:
+- `openapi.yaml` — OpenAPI 3 specification of all required endpoints
+- `postman.json` — Postman collection for interactive endpoint exploration
 
-Body (JSON):
+## Usage
 
-```json
-{
-  "method": "paypal",
-  "id": "12212486748",
-  "description": "Invoice description",
-  "amount": { "value": "1", "currency": "USD" },
-  "save_account": false,
-  "merchant_initiated": true,
-  "project": {
-    "name": "EPIC GAMES LEVELED UP",
-    "description": "sunt mollit aliqua consequat",
-    "url": "https://xsolla.com/portfolio/clients/epic-games",
-    "icon": "https://cdn.xsolla.net/strapi-bucket-prod/x_7bf715c4bd/x_7bf715c4bd.svg"
-  },
-  "customer": {
-    "id": "bYd6nNaVv0mx5mZUFjv5Qw",
-    "email": "user@example.com",
-    "country": "US",
-    "ip": "127.0.0.1",
-    "language": "en-US",
-    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
-    "zip": ""
-  },
-  "urls": {
-    "success": "https://pay-station.xsolla.com/userback/return?sid=success-5569",
-    "cancel": "https://pay-station.xsolla.com/userback/return?sid=failed-5569",
-    "pending": "https://pay-station.xsolla.com/userback/return?sid=pending-5569",
-    "webhook": "https://ps.xsolla.dev/universal/universal-api"
-  }
-}
+**Run a local mock server with Prism:**
+
+```bash
+npx @stoplight/prism-cli mock openapi.yaml
 ```
 
-Method:
+**Import into Postman:**
 
-```text
-POST
-```
+Open Postman, select **Import**, and upload `postman.json` to explore all endpoints interactively.
 
-URL:
+## Documentation
 
-```text
-https://example.com/v1/payments
-```
+Full integration guide is in this repository's `README.md`. For Xsolla Payments API context, visit [developers.xsolla.com](https://developers.xsolla.com/).
 
-String for signature (components):
+## Support
 
-```text
-"@method": POST
-"@target-uri": https://example.com/v1/payments
-"content-digest": sha-256=za9ntgWt36r2U7FlKOi8b4aVV78l4gNDjY2cEZSguOk=
-"request-id": req_68db892bb70f8900615812
-```
+- [Open an issue](https://github.com/xsolla/payments-integration-spec/issues) on GitHub
+- Contact your Xsolla integration manager for signing key provisioning
 
-HMAC-SHA256:
+## License
 
-```text
-cbfe557665567ec7723fa5dd1d0a21fdf6aec4a7cdd6dff23116ac0032cd1562
-```
-
-Signature:
-
-```text
-sig1=:y/5VdmVWfsdyP6XdHQoh/fauxKfN1t/yMRasADLNFWI=:
-```
-
-Headers:
-
-```text
-Content-Type: application/json
-Content-Digest: sha-256=za9ntgWt36r2U7FlKOi8b4aVV78l4gNDjY2cEZSguOk=
-Request-Id: req_68db892bb70f8900615812
-Signature-Input: sig1=("("@method" "@target-uri" "content-digest" "request-id")");alg="hmac-sha256";created=1759217963;expires=1759218263;keyid="1213"
-Signature: sig1=:y/5VdmVWfsdyP6XdHQoh/fauxKfN1t/yMRasADLNFWI=:
-Prefer: environment="sandbox"
-```
-
-Signing key (example):
-
-```
-eIfjRT>'i=8Xao8:n2P33vP4u"NTiGeU
-```
-
-## Endpoints to implement (minimum)
-
-- `POST /v1/payments` — accept payment creation and return the `action` object according to the OpenAPI spec.
-- `PATCH /v1/payments/{transaction_id}` — confirm when `action.type=confirm` is returned.
-- `POST /v1/refund/{transaction_id}` — create a refund (optional; only if supported by the provider).
-- `GET /v1/payments/{transaction_id}` — provide current status.
-
-## Webhooks to Xsolla
-
-Payment providers send webhooks to Xsolla using the `urls.webhook` from the creation request.
-
-Headers:
-- `Request-Id` (required)
-- `Content-Digest` (required for requests with body)
-- `Signature-Input` (required)
-- `Signature` (required)
-
-Events and payloads (top-level fields, no data wrapper):
-- `payment.succeeded`: `type`, `occurred_at`, `transaction_id`, optional `method`, `id`, `amount`, `account_data`, `errors[]`
-- `payment.failed`: `type`, `occurred_at`, `transaction_id`, optional `method`, `id`, `amount`, `reason`, `errors[]`
-- `payment.refunded`: `type`, `occurred_at`, `transaction_id`, `amount`, optional `method`, `reason`, `refund_id`
-- `account.activated`: `type`, `occurred_at`, `account_id`, `account_data`
-- `account.deleted`: `type`, `occurred_at`, `account_id`
-
-Delivery:
-- At-least-once with retries on 5xx/timeout.
-- 2xx means ACK; consumer must handle idempotently.
-
-## Idempotency
-
-- Use `Idempotency-Key` when applicable.
-
-## Sequence diagrams
-
-### 1) White label
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant X as Xsolla
-    participant P as Payment Provider
-    U->>X: Init payment (UI)
-    X->>P: POST /v1/payments (with payload)
-    alt Immediate success
-      P-->>X: status=succeeded
-      X-->>U: Show success
-    else Additional confirmation required (optional)
-      P-->>X: action=confirm (pending)
-      X-->>U: Ask for OTP / additional data
-      U->>X: Provide OTP / additional data
-      X->>P: PATCH /v1/payments/{transaction_id} (with payload)
-      P-->>X: status=succeeded/failed
-      X-->>U: Show result
-    end
-    opt Webhooks (optional)
-      P-->>X: payment.succeeded/payment.failed
-    end
-```
-
-### 2) Redirect
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant X as Xsolla
-    participant P as Payment Provider
-    U->>X: Init payment (UI)
-    X->>P: POST /v1/payments
-    P-->>X: action=redirect (pending)
-    X-->>U: Provide redirect URL (action.url)
-    U->>P: Complete payment on provider
-    P-->>U: Redirect back to success/cancel/pending URL
-    P-->>X: payment.succeeded/payment.failed (webhook)
-    X-->>U: Show result
-    opt After redirect back (optional)
-      X->>P: GET /v1/payments/{transaction_id}
-      P-->>X: PaymentStatusResponse
-    end
-```
-
-### 3) QR
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant X as Xsolla
-    participant P as Payment Provider
-    U->>X: Init payment (UI)
-    X->>P: POST /v1/payments
-    P-->>X: action=qr (pending)
-    X-->>U: Show QR code
-    U->>P: Pay by scanning QR
-    P-->>X: payment.succeeded/payment.failed (webhook)
-    X-->>U: Show result
-```
-
-### 4) Create payment method via redirect
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant X as Xsolla
-    participant P as Payment Provider
-    U->>X: Start account setup (UI)
-    X->>P: POST /v1/accounts
-    P-->>X: action=redirect
-    X-->>U: Provide redirect URL
-    U->>P: Authorize account on provider
-    P-->>U: Redirect back to success URL
-    P-->>X: account.activated (webhook)
-    opt After redirect back (optional)
-      X->>P: GET /v1/accounts/{account_id}
-      P-->>X: AccountStatusResponse
-    end
-```
-
-### 5) Pay and create payment method (redirect + webhooks)
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant X as Xsolla
-    participant P as Payment Provider
-    U->>X: Init payment (save_account=true)
-    X->>P: POST /v1/payments (save_account=true)
-    P-->>X: action=redirect
-    X-->>U: Provide redirect URL
-    U->>P: Complete payment on provider
-    P-->>U: Redirect back (success/cancel)
-    P-->>X: payment.succeeded/payment.failed (webhook)
-    opt account linking
-      P-->>X: account.activated (webhook)
-    end
-    opt After redirect back (optional)
-      X->>P: GET /v1/payments/{transaction_id}
-      P-->>X: PaymentStatusResponse
-    end
-```
-
-## Error handling
-
-- Follow error formats from the OpenAPI spec. Errors include `code`, `category`, and `message`, with optional `param`, `retry_after`, `doc_url`.
-- Common codes: `invalid_request`, `invalid_param`, `authentication_required`, `permission_denied`, `rate_limited`, `idempotency_conflict`, `transaction_not_found`, `processor_declined`, `timeout`, `internal_error`.
-- For signature failures, return `401 Unauthorized` with a generic message.
-
-## Testing
-
-- Use the Prism mock server to emulate responses.
-- Validate Signature and Content-Digest locally before deploying.
+MIT License. See [LICENSE](./LICENSE).
