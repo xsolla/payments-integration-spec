@@ -1,5 +1,8 @@
 # Payment Providers Integration Guide
 
+![License](https://img.shields.io/github/license/xsolla/payments-integration-spec)
+![Latest release](https://img.shields.io/github/v/release/xsolla/payments-integration-spec)
+
 This document describes the API specification that payment providers should implement on their side to integrate with the Payments API.
 The provider-side implementation can be a proxy service to an existing provider API or a new service built specifically for this contract.
 
@@ -278,3 +281,12 @@ sequenceDiagram
 
 - Use the Prism mock server to emulate responses.
 - Validate Signature and Content-Digest locally before deploying.
+
+## Support
+
+- **GitHub Issues:** [github.com/xsolla/payments-integration-spec/issues](https://github.com/xsolla/payments-integration-spec/issues)
+- **Developer portal:** [developers.xsolla.com](https://developers.xsolla.com)
+
+## License
+
+MIT License. See [LICENSE](./LICENSE).
