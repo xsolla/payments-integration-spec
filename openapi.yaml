@@ -19,6 +19,7 @@ paths:
         - $ref: '#/components/parameters/ContentDigest'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
       requestBody:
         required: true
         content:
@@ -36,10 +37,40 @@ paths:
           $ref: '#/components/responses/Error'
         '401':
           $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
         '422':
+          $ref: '#/components/responses/Error'
+        '429':
           $ref: '#/components/responses/Error'
         '500':
           $ref: '#/components/responses/Error'
+      callbacks:
+        providerEvents:
+          '{$request.body#/urls/webhook}':
+            post:
+              operationId: providerEventCallback
+              summary: Provider → Xsolla event
+              description: Events the provider sends to `urls.webhook` from the create request. Same payloads as the `paymentEvent` webhook.
+              parameters:
+                - $ref: '#/components/parameters/RequestId'
+                - $ref: '#/components/parameters/ContentDigest'
+                - $ref: '#/components/parameters/SignatureInput'
+                - $ref: '#/components/parameters/Signature'
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      oneOf:
+                        - $ref: '#/components/schemas/WebhookPaymentSucceeded'
+                        - $ref: '#/components/schemas/WebhookPaymentFailed'
+                        - $ref: '#/components/schemas/WebhookPaymentRefunded'
+                        - $ref: '#/components/schemas/WebhookAccountActivated'
+                        - $ref: '#/components/schemas/WebhookAccountDeleted'
+              responses:
+                '200':
+                  description: OK
   /v1/payments/{transaction_id}:
     get:
       operationId: getPaymentStatus
@@ -48,6 +79,9 @@ paths:
         - Payments
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: transaction_id
           in: path
           required: true
@@ -64,6 +98,8 @@ paths:
           $ref: '#/components/responses/Error'
         '404':
           $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
         '500':
           $ref: '#/components/responses/Error'
     patch:
@@ -73,6 +109,10 @@ paths:
         - Payments
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: transaction_id
           in: path
           required: true
@@ -95,7 +135,13 @@ paths:
           $ref: '#/components/responses/Error'
         '401':
           $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
         '422':
+          $ref: '#/components/responses/Error'
+        '429':
           $ref: '#/components/responses/Error'
         '500':
           $ref: '#/components/responses/Error'
@@ -107,6 +153,10 @@ paths:
         - Payments
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: transaction_id
           in: path
           required: true
@@ -129,7 +179,13 @@ paths:
           $ref: '#/components/responses/Error'
         '401':
           $ref: '#/components/responses/Error'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
         '422':
+          $ref: '#/components/responses/Error'
+        '429':
           $ref: '#/components/responses/Error'
   /v1/accounts:
     post:
@@ -139,6 +195,10 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
       requestBody:
         required: true
         content:
@@ -154,6 +214,10 @@ paths:
                 $ref: '#/components/schemas/AccountCreateResponse'
         '400':
           $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
   /v1/accounts/{account_id}:
     get:
       operationId: getAccountStatus
@@ -162,6 +226,9 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: account_id
           in: path
           required: true
@@ -176,6 +243,8 @@ paths:
                 $ref: '#/components/schemas/AccountStatusResponse'
         '404':
           $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
     patch:
       operationId: confirmAccount
       summary: Confirm saved account
@@ -183,6 +252,10 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigestOptional'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: account_id
           in: path
           required: true
@@ -202,6 +275,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountStatusResponse'
+        '404':
+          $ref: '#/components/responses/Error'
+        '409':
+          $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
     delete:
       operationId: deleteAccount
       summary: Delete saved account
@@ -209,6 +288,9 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: account_id
           in: path
           required: true
@@ -217,6 +299,10 @@ paths:
       responses:
         '204':
           description: Deleted
+        '404':
+          $ref: '#/components/responses/Error'
+        '429':
+          $ref: '#/components/responses/Error'
   /health:
     get:
       operationId: health
@@ -226,24 +312,6 @@ paths:
       responses:
         '200':
           description: ok
-      callbacks:
-        providerEvents:
-          '{$request.body#/urls/webhook}':
-            post:
-              requestBody:
-                required: true
-                content:
-                  application/json:
-                    schema:
-                      oneOf:
-                        - $ref: '#/components/schemas/WebhookPaymentSucceeded'
-                        - $ref: '#/components/schemas/WebhookPaymentFailed'
-                        - $ref: '#/components/schemas/WebhookPaymentRefunded'
-                        - $ref: '#/components/schemas/WebhookAccountActivated'
-                        - $ref: '#/components/schemas/WebhookAccountDeleted'
-              responses:
-                '200':
-                  description: OK
 webhooks:
   paymentEvent:
     post:
@@ -284,6 +352,13 @@ components:
       required: true
       schema:
         type: string
+    ContentDigestOptional:
+      name: Content-Digest
+      in: header
+      required: false
+      description: Required when the request has a body.
+      schema:
+        type: string
     SignatureInput:
       name: Signature-Input
       in: header
@@ -296,6 +371,14 @@ components:
       required: true
       schema:
         type: string
+    Prefer:
+      name: Prefer
+      in: header
+      required: false
+      description: Internal, optional. Xsolla may send `environment="sandbox"` to mark a sandbox request.
+      schema:
+        type: string
+      example: environment="sandbox"
   responses:
     Error:
       description: Error response
@@ -481,8 +564,8 @@ components:
           items:
             $ref: '#/components/schemas/Error'
       oneOf:
-        - $ref: '#/components/schemas/PaymentCreateResponsePending'
         - $ref: '#/components/schemas/PaymentCreateResponseActionRequired'
+        - $ref: '#/components/schemas/PaymentCreateResponseFinal'
     PaymentConfirmRequest:
       type: object
       description: |
@@ -696,7 +779,7 @@ components:
               description: Payment system transaction identifier of the original payment.
             amount:
               $ref: '#/components/schemas/Amount'
-              description: Refunded amount. If omitted, full refund is implied.
+              description: Refunded amount. For a full refund, this equals the original payment amount.
             reason:
               type: string
               description: Reason provided by the payment system for the refund.
@@ -737,8 +820,9 @@ components:
             account_id:
               type: string
               description: Identifier of the saved payment account (token).
-    PaymentCreateResponsePending:
+    PaymentCreateResponseActionRequired:
       type: object
+      description: Payment is pending and the customer must complete the returned action.
       required:
         - status
         - action
@@ -746,8 +830,9 @@ components:
         status:
           type: string
           const: pending
-    PaymentCreateResponseActionRequired:
+    PaymentCreateResponseFinal:
       type: object
+      description: Payment resolved synchronously as succeeded or failed; no customer action is returned.
       required:
         - status
       properties:
@@ -860,7 +945,6 @@ components:
         - temporary_unavailable
         - internal_error
         - service_unavailable
-        - account_not_found
         - account_inactive
         - account_deleted
         - account_locked
