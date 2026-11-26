@@ -862,7 +862,6 @@ components:
         - temporary_unavailable
         - internal_error
         - service_unavailable
-        - account_not_found
         - account_inactive
         - account_deleted
         - account_locked
