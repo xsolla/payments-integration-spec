@@ -44,6 +44,32 @@ paths:
           $ref: '#/components/responses/Error'
         '500':
           $ref: '#/components/responses/Error'
+      callbacks:
+        providerEvents:
+          '{$request.body#/urls/webhook}':
+            post:
+              operationId: providerEventCallback
+              summary: Provider → Xsolla event
+              description: Events the provider sends to `urls.webhook` from the create request. Same payloads as the `paymentEvent` webhook.
+              parameters:
+                - $ref: '#/components/parameters/RequestId'
+                - $ref: '#/components/parameters/ContentDigest'
+                - $ref: '#/components/parameters/SignatureInput'
+                - $ref: '#/components/parameters/Signature'
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      oneOf:
+                        - $ref: '#/components/schemas/WebhookPaymentSucceeded'
+                        - $ref: '#/components/schemas/WebhookPaymentFailed'
+                        - $ref: '#/components/schemas/WebhookPaymentRefunded'
+                        - $ref: '#/components/schemas/WebhookAccountActivated'
+                        - $ref: '#/components/schemas/WebhookAccountDeleted'
+              responses:
+                '200':
+                  description: OK
   /v1/payments/{transaction_id}:
     get:
       operationId: getPaymentStatus
@@ -278,24 +304,6 @@ paths:
       responses:
         '200':
           description: ok
-      callbacks:
-        providerEvents:
-          '{$request.body#/urls/webhook}':
-            post:
-              requestBody:
-                required: true
-                content:
-                  application/json:
-                    schema:
-                      oneOf:
-                        - $ref: '#/components/schemas/WebhookPaymentSucceeded'
-                        - $ref: '#/components/schemas/WebhookPaymentFailed'
-                        - $ref: '#/components/schemas/WebhookPaymentRefunded'
-                        - $ref: '#/components/schemas/WebhookAccountActivated'
-                        - $ref: '#/components/schemas/WebhookAccountDeleted'
-              responses:
-                '200':
-                  description: OK
 webhooks:
   paymentEvent:
     post:
