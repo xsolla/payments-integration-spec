@@ -48,6 +48,8 @@ paths:
         - Payments
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
         - name: transaction_id
           in: path
           required: true
@@ -73,6 +75,9 @@ paths:
         - Payments
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
         - name: transaction_id
           in: path
           required: true
@@ -107,6 +112,9 @@ paths:
         - Payments
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
         - name: transaction_id
           in: path
           required: true
@@ -139,6 +147,9 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigest'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
       requestBody:
         required: true
         content:
@@ -162,6 +173,8 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
         - name: account_id
           in: path
           required: true
@@ -183,6 +196,9 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/ContentDigestOptional'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
         - name: account_id
           in: path
           required: true
@@ -209,6 +225,8 @@ paths:
         - Accounts
       parameters:
         - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/SignatureInput'
+        - $ref: '#/components/parameters/Signature'
         - name: account_id
           in: path
           required: true
@@ -282,6 +300,13 @@ components:
       name: Content-Digest
       in: header
       required: true
+      schema:
+        type: string
+    ContentDigestOptional:
+      name: Content-Digest
+      in: header
+      required: false
+      description: Required when the request has a body.
       schema:
         type: string
     SignatureInput:
