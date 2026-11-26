@@ -19,6 +19,7 @@ paths:
         - $ref: '#/components/parameters/ContentDigest'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
       requestBody:
         required: true
         content:
@@ -80,6 +81,7 @@ paths:
         - $ref: '#/components/parameters/RequestId'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: transaction_id
           in: path
           required: true
@@ -110,6 +112,7 @@ paths:
         - $ref: '#/components/parameters/ContentDigest'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: transaction_id
           in: path
           required: true
@@ -153,6 +156,7 @@ paths:
         - $ref: '#/components/parameters/ContentDigest'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: transaction_id
           in: path
           required: true
@@ -194,6 +198,7 @@ paths:
         - $ref: '#/components/parameters/ContentDigest'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
       requestBody:
         required: true
         content:
@@ -223,6 +228,7 @@ paths:
         - $ref: '#/components/parameters/RequestId'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: account_id
           in: path
           required: true
@@ -249,6 +255,7 @@ paths:
         - $ref: '#/components/parameters/ContentDigestOptional'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: account_id
           in: path
           required: true
@@ -283,6 +290,7 @@ paths:
         - $ref: '#/components/parameters/RequestId'
         - $ref: '#/components/parameters/SignatureInput'
         - $ref: '#/components/parameters/Signature'
+        - $ref: '#/components/parameters/Prefer'
         - name: account_id
           in: path
           required: true
@@ -363,6 +371,14 @@ components:
       required: true
       schema:
         type: string
+    Prefer:
+      name: Prefer
+      in: header
+      required: false
+      description: Internal, optional. Xsolla may send `environment="sandbox"` to mark a sandbox request.
+      schema:
+        type: string
+      example: environment="sandbox"
   responses:
     Error:
       description: Error response
