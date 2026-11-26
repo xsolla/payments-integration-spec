@@ -481,8 +481,8 @@ components:
           items:
             $ref: '#/components/schemas/Error'
       oneOf:
-        - $ref: '#/components/schemas/PaymentCreateResponsePending'
         - $ref: '#/components/schemas/PaymentCreateResponseActionRequired'
+        - $ref: '#/components/schemas/PaymentCreateResponseFinal'
     PaymentConfirmRequest:
       type: object
       description: |
@@ -737,8 +737,9 @@ components:
             account_id:
               type: string
               description: Identifier of the saved payment account (token).
-    PaymentCreateResponsePending:
+    PaymentCreateResponseActionRequired:
       type: object
+      description: Payment is pending and the customer must complete the returned action.
       required:
         - status
         - action
@@ -746,8 +747,9 @@ components:
         status:
           type: string
           const: pending
-    PaymentCreateResponseActionRequired:
+    PaymentCreateResponseFinal:
       type: object
+      description: Payment resolved synchronously as succeeded or failed; no customer action is returned.
       required:
         - status
       properties:
