@@ -755,7 +755,7 @@ components:
               description: Payment system transaction identifier of the original payment.
             amount:
               $ref: '#/components/schemas/Amount'
-              description: Refunded amount. If omitted, full refund is implied.
+              description: Refunded amount. For a full refund, this equals the original payment amount.
             reason:
               type: string
               description: Reason provided by the payment system for the refund.
